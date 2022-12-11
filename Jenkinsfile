@@ -18,7 +18,9 @@ pipeline {
         }
              stage('archiveArtifacts') {
             steps{
-                archiveArtifacts artifacts: '**/.*war', followSymlinks: false}}
+               sh "mvn package "
+                archiveArtifacts artifacts: '**/*.war', followSymlinks: false
+            }}
         
  stage('Deploy') {
             steps {
