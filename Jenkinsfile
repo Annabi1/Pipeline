@@ -27,7 +27,7 @@ deploy adapters: [tomcat9(credentialsId: 'tomcatUserAnnabi', path: '', url: 'htt
         stage('Build Docker Image') {
             steps {
                 script {
-                  sh 'docker build -t ba2aec10e58f/devops-1.0 .'
+                  sh 'docker build -t ba2aec10e58f/devops-1.0    .'
                 }
             }
         }
