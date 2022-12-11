@@ -35,8 +35,7 @@ deploy adapters: [tomcat9(credentialsId: 'tomcatUserAnnabi', path: '', url: 'htt
 docker rm -f docker_demo;
 docker image rm -f docker_demo;
 cd /opt/docker;
-docker build -t docker_demo .
-docker run -d --name docker_demo -p 8090:8080 docker_demo''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '//opt//docker', remoteDirectorySDF: false, removePrefix: 'webapp/target/', sourceFiles: 'webapp/target/*.war')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+docker build -t docker_demo .''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '44.202.221.218', remoteDirectorySDF: false, removePrefix: 'webapp/target', sourceFiles: 'webapp/target/*.war'), sshTransfer(cleanRemote: false, excludes: '', execCommand: 'docker run -d --name docker_demo -p 8090:8080 docker_demo', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'webapp/target/*.war')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
                 }
             }
         }
