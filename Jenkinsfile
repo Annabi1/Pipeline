@@ -40,23 +40,7 @@ docker build -t docker_demo .''', execTimeout: 120000, flatten: false, makeEmpty
             }
         }
          
-        stage('Deploy Docker Image') {
-            steps {
-                script {
-                withCredentials([string(credentialsId: 'ba2aec10e58f', variable: 'dockerhubpwd')]) {
-                    sh 'docker login -u ba2aec10e58f -p ${dockerhubpwd}'
-                 }  
-                 sh 'docker push ba2aec10e58f/my-app-1.0'
-                }
-            }
-        }
-         stage('Docker pull') {
-            steps{
-
-                sh "docker pull ba2aec10e58f/my-app-1.0:latest"
-                
-            }
-        }
+     
         
        
      
