@@ -31,7 +31,11 @@ deploy adapters: [tomcat9(credentialsId: 'tomcatUserAnnabi', path: '', url: 'htt
         stage('Build Docker Image') {
             steps {
                 script {
-                  sh 'docker build -t ba2aec10e58f/devops-1.0    .'
+                  sshPublisher(publishers: [sshPublisherDesc(configName: 'DockerServer', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''docker stop docker_demo;
+docker rm -f docker_demo;
+docker image rm -f docker_demo;
+cd /opt/docker;
+docker build -t docker_demo .''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '//opt//docker', remoteDirectorySDF: false, removePrefix: 'webapp/target/', sourceFiles: 'webapp/target/*.war')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
                 }
             }
         }
