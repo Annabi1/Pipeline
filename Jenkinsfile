@@ -42,10 +42,7 @@ docker build -t docker_demo .''', execTimeout: 120000, flatten: false, makeEmpty
          
            stage('Run Dockerfile ') {
             steps {
-                script {
-     sshPublisher(publishers: [sshPublisherDesc(configName: 'DockerServer', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'docker run -d --name docker_demo -p 8099:8080 docker_demo', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '//opt//docker', remoteDirectorySDF: false, removePrefix: 'webapp/target', sourceFiles: 'webapp/target/*.war')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
-        
-          }
+               sh ' docker run -d --name docker_demo -p 8090:8080 docker_demo'
             }
         }
          
